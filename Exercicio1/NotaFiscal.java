@@ -1,67 +1,33 @@
-// import java.util.ArrayList;
-// import java.util.List;
-
-// public class NotaFiscal {
-//     private List<Produto> itensComprados;
-//     private double totalCompra;
-
-//     public NotaFiscal() {
-//         this.itensComprados = new ArrayList<>();
-//         this.totalCompra = 0;
-//     }
-
-//     public void comprarProduto(Produto produto, int quantidade) {
-//         if (produto.getEstoque() >= quantidade) {
-//             produto.setEstoque(produto.getEstoque() - quantidade);
-//             this.itensComprados.add(produto);
-//             this.totalCompra += produto.getPreco() * quantidade;
-//         } else {
-//             System.out.println("Desculpe, não temos estoque suficiente para " + produto.getNome() + ".");
-//         }
-//     }
-
-//     public void gerarRelatorio() {
-//         System.out.println("Relatório de Vendas:");
-//         for (Produto produto : this.itensComprados) {
-//             System.out.println(produto.getNome());
-//         }
-//         System.out.println("Total da compra: R$" + this.totalCompra);
-//     }
-// }
+package Exercicio1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-package Exercicio1;
-
 public class NotaFiscal {
-    private List<Produto> itensComprados;
-    private double totalCompra;
+    private List<Produto> itens;
+    private double total;
 
     public NotaFiscal() {
-        this.itensComprados = new ArrayList<>();
-        this.totalCompra = 0;
+        this.itens = new ArrayList<>();
+        this.total = 0.0;
     }
 
-    public void comprarProduto(Produto produto, int quantidade) {
+    public void adicionarItem(Produto produto, int quantidade) {
         if (produto.getEstoque() >= quantidade) {
+            itens.add(produto);
+            total += produto.getPreco() * quantidade;
             produto.setEstoque(produto.getEstoque() - quantidade);
-            this.itensComprados.add(produto);
-            this.totalCompra += produto.getPreco() * quantidade;
+            System.out.println(produto.getNome() + " foi adicionado à nota fiscal. Quantidade: " + quantidade);
         } else {
-            System.out.println("Desculpe, não temos estoque suficiente para " + produto.getNome() + ".");
+            System.out.println("Estoque insuficiente de " + produto.getNome() + ", tente adicionar menos do que " + quantidade);
         }
     }
 
-    public void gerarRelatorio() {
-        System.out.println("Relatório de Vendas:");
-        for (Produto produto : this.itensComprados) {
-            System.out.println(produto.getNome());
+    public void imprimirNotaFiscal() {
+        System.out.println("\nNota Fiscal:");
+        for (Produto item : itens) {
+            System.out.println("Produto: " + item.getNome() + ", Preço unitário: R$" + item.getPreco());
         }
-        System.out.println("Total da compra: R$" + this.totalCompra);
-    }
-
-    public static void main(String[] args) {
-        Produto p1 = new Produto("Nome1", 15.99, 2);
+        System.out.println("Total da compra: R$" + total);
     }
 }

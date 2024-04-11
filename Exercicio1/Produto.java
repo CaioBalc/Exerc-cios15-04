@@ -1,3 +1,5 @@
+package Exercicio1;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -9,27 +11,27 @@ public class Produto {
         this.estoque = estoque;
     }
 
-     public void setNome(){
-         this.nome = nome;
-     }
+    public String getNome() {
+        return nome;
+    }
 
-     public void setPreco(){
-         this.preco = preco;
-     }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-     public void setEstoque(){
-         this.estoque = estoque;
-     }
+    public double getPreco() {
+        return preco;
+    }
 
-     public String getNome(){
-         return nome;
-     }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
-     public double getPreco(){
-         return preco;
-     }
+    public int getEstoque() {
+        return estoque;
+    }
 
-     public int getEstoque(){
-         return estoque;
-     }
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
+    }
 }
